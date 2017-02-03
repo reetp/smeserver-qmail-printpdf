@@ -7,7 +7,7 @@ use strict;
 
 my $configDB = esmith::ConfigDB->open_ro or die("can't open Config DB");
 
-my ( $parser, $subject, $from, $entity, $num_parts, $part, $line);
+my ( $parser, $subject, $from, $entity, $num_parts, $part, $line );
 
 my $status = $configDB->get_prop( 'qmail-printpdf', 'status' ) || 'disabled';
 
@@ -26,7 +26,6 @@ my %type_ok = ( 'application/pdf'          => 1,
                 'application/octet-stream' => 1 );
 open( LOG, ">>", "/var/log/printpdf.log" );
 print LOG "Received new email at " . localtime() . "\n";
-
 
 # Use default settings if not provided in configuration-file
 
@@ -54,7 +53,7 @@ if ( $num_parts > 0 ) {
     print LOG "Message from:\n$from\nSubject:\n$subject\n$num_parts mime parts\n";
 
     # Password ok?
-    if ( exists( $Password ) && index( $subject, $Password ) < 0 ) {
+    if ( exists($Password) && index( $subject, $Password ) < 0 ) {
         print LOG "Password not found in subject-field\n";
     }
     else {
