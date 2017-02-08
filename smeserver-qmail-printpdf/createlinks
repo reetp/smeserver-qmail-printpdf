@@ -3,20 +3,13 @@
 # This is just a copy of another file so I remember how it goes.
 # Most of this can probably be ripped out
 
-
-# Need some thought on when the templates should be expanded and when the action should be called.
-
 use esmith::Build::CreateLinks qw(:all);
-my $event = "ipsec-update";
+# my $event = "ipsec-update";
 
 # ipsec-update
 
 foreach (qw(
-       /etc/ipsec.secrets
-       /etc/ipsec.d/ipsec.conf
-       /etc/ipsec.d/ipsec.secrets
-       /etc/rc.d/init.d/masq
-       /etc/sysctl.conf
+       /etc/printpdf.conf
     ))
 {
     templates2events("$_", qw(
@@ -24,28 +17,13 @@ foreach (qw(
     console-save
     bootstrap-console-save
     remoteaccess-update
-    ipsec-update
     ));
 }
-
-#--------------------------------------------------
-# actions for ipsec-update event
-#--------------------------------------------------
-
-event_link("ipsec-update", $event, "10");
-
-# Runlevel init links.
-service_link_enhanced("ipsec", "S95", "7");
-service_link_enhanced("ipsec", "K21", "6");
-service_link_enhanced("ipsec", "K21", "0");
-service_link_enhanced("ipsec", "K21", "1");
-
-safe_symlink("adjust", "root/etc/e-smith/events/$event/services2adjust/masq");
 
 # Set up generic logfile timestamp renaming/symlinking
 
 foreach (qw(
-    /var/log/pluto/pluto.log
+    /var/log/printpdf.log
     ))
 {
     safe_touch "root/etc/e-smith/events/logrotate/logfiles2timestamp/$_";
@@ -55,6 +33,6 @@ foreach (qw(
 # actions for logrotate event
 #--------------------------------------------------
 
-$event = "logrotate";
+# $event = "logrotate";
 
-safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/ipsec");
+# safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/ipsec");
