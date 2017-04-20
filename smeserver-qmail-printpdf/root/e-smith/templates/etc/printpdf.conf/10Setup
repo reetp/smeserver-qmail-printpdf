@@ -8,7 +8,7 @@
     my $Printer = $configDB->get_prop( 'qmail-printpdf', 'PrinterName' ) or die("No printer defined");
     my $status   = $configDB->get_prop( 'qmail-printpdf', 'status' )   || 'disabled';
     my $Media    = $configDB->get_prop( 'qmail-printpdf', 'Media' )    || 'A4,tray1';
-    my $Password = $configDB->get_prop( 'qmail-printpdf', 'Password' ) || 'NoPasswordSet';
+    my $Password = $configDB->get_prop( 'qmail-printpdf', 'Password' ) || '';
     my $TmpDir = $configDB->get_prop( 'qmail-printpdf', 'TmpDir' ) || '/tmp/printpdf';
     
     # should be or die here if no printer defined or found ?
@@ -21,7 +21,7 @@
     }
 
     else {
-        $OUT .= "password = $Password";
-        $OUT .= "lp-options = -d $Printer -o media=$Media -o fit-to-page -o position=top -o scaling=100";
+        $OUT .= "password = $Password\n" if ($Password);
+        $OUT .= "lp-options = -d $Printer -o media=$Media -o fit-to-page -o position=top -o scaling=100\n";
     }
 }
