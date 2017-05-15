@@ -1,6 +1,6 @@
 %define name smeserver-qmail-printpdf
 %define version 0.1
-%define release 3
+%define release 4
 Summary: Plugin to enable allow email print to PDF
 Name: %{name}
 Version: %{version}
@@ -21,6 +21,9 @@ AutoReqProv: no
 Plugin to enable allow email print to PDF
 
 %changelog
+* Mon May 15 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-4
+- Add missing DB type
+
 * Mon May 15 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-3
 - fix printpdf perms
 
