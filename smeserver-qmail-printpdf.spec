@@ -4,7 +4,7 @@
 Summary: Plugin to enable allow email print to PDF
 Name: %{name}
 Version: %{version}
-Release: %{release}%{?dist}
+Release: %{release}
 License: GNU GPL version 2
 URL: http://libreswan.org/
 Group: SMEserver/addon
