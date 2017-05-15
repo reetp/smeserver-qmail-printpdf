@@ -22,6 +22,9 @@ Plugin to enable allow email print to PDF
 
 %changelog
 * Mon May 15 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-4
+- fix wrong directory structure in /etc/
+
+* Mon May 15 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-4
 - Add missing DB type
 
 * Mon May 15 2017 John Crisp <jcrisp@safeandsoundit.co.uk> 0.1-3
