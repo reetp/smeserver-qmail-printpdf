@@ -1,3 +1,3 @@
-PERMS=0644
+PERMS=0744
 UID="root"
 GID="qmail"
