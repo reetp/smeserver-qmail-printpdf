@@ -5,15 +5,13 @@
 
     my $configDB = esmith::ConfigDB->open_ro or die("can't open Config DB");
     
-    my $Printer = $configDB->get_prop( 'qmail-printpdf', 'PrinterName' ) or die("No printer defined");
+    # should be or die here if no printer defined or found ?
+    my $Printer = $configDB->get_prop( 'qmail-printpdf', 'PrinterName' ) || 'None';
     my $status   = $configDB->get_prop( 'qmail-printpdf', 'status' )   || 'disabled';
     my $Media    = $configDB->get_prop( 'qmail-printpdf', 'Media' )    || 'A4,tray1';
     my $Password = $configDB->get_prop( 'qmail-printpdf', 'Password' ) || '';
     my $TmpDir = $configDB->get_prop( 'qmail-printpdf', 'TmpDir' ) || '/tmp/printpdf';
     
-    # should be or die here if no printer defined or found ?
-    my $Printer = $configDB->get_prop( 'qmail-printpdf', 'PrinterName' ) || 'None';
-
     if ( ( $status ne 'enabled' ) && ( $Printer ne '' ) ) {
         $OUT .= "# Something is not right. Check the following values\n";
         $OUT .= "# PrintPDF is $status\n";
