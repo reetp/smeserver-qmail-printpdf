@@ -12,7 +12,7 @@
     my $Password = $configDB->get_prop( 'qmail-printpdf', 'Password' ) || 'None';
     my $TmpDir = $configDB->get_prop( 'qmail-printpdf', 'TmpDir' ) || '/tmp/printpdf';
     
-    if ( ( $status ne 'enabled' ) && ( $Printer ne 'None' ) && ( $Password ne 'None' ) {
+    if ( ( $status ne 'enabled' ) && ( $Printer ne 'None' ) && ( $Password ne 'None' ) ){
         $OUT .= "# Something is not right. Check the following values\n";
         $OUT .= "# PrintPDF is $status\n";
         $OUT .= "# Printer name $Printer\n";
